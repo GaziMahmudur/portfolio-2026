@@ -4,14 +4,12 @@ import { MY_EXPERIENCE } from '@/lib/data';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
-import { useRef, useState, MouseEvent } from 'react';
-import { cn } from '@/lib/utils';
+import { useRef } from 'react';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const Experiences = () => {
     const containerRef = useRef<HTMLDivElement>(null);
-    const [hoveredExperience, setHoveredExperience] = useState<string | null>(null);
 
     useGSAP(
         () => {
@@ -53,58 +51,16 @@ const Experiences = () => {
         { scope: containerRef },
     );
 
-    const handleMouseMove = (e: MouseEvent) => {
-        if (!containerRef.current) return;
-        const follower = containerRef.current.querySelector('.image-follower');
-        if (!follower) return;
-
-        const rect = containerRef.current.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        gsap.to(follower, {
-            x: x + 20,
-            y: y - 100,
-            duration: 0.6,
-            ease: 'power3.out',
-        });
-    };
-
     return (
-        <section className="py-section relative" id="my-experience" onMouseMove={handleMouseMove}>
+        <section className="py-section relative" id="my-experience">
             <div className="container" ref={containerRef}>
                 <SectionTitle title="My Experience" />
 
                 <div className="grid gap-14 relative group/exp">
-                    {/* Hover Image Follower */}
-                    <div 
-                        className={cn(
-                            "image-follower pointer-events-none absolute z-10 w-64 aspect-video overflow-hidden rounded-lg border border-primary/20 bg-background transition-opacity duration-300",
-                            hoveredExperience ? "opacity-100" : "opacity-0"
-                        )}
-                    >
-                        {MY_EXPERIENCE.map((exp) => (
-                            <img
-                                key={`${exp.company}-${exp.title}`}
-                                src={`/projects/thumbnail/${exp.company.toLowerCase().replace(/ /g, '-')}.webp`}
-                                alt={exp.company}
-                                className={cn(
-                                    "absolute inset-0 w-full h-full object-cover transition-opacity duration-500",
-                                    hoveredExperience === exp.company ? "opacity-100" : "opacity-0"
-                                )}
-                                onError={(e) => {
-                                    (e.target as HTMLImageElement).src = '/projects/thumbnail/zkb.webp';
-                                }}
-                            />
-                        ))}
-                    </div>
-
                     {MY_EXPERIENCE.map((item) => (
                         <div 
                             key={`${item.company}-${item.role_type}`} 
                             className="experience-item relative"
-                            onMouseEnter={() => setHoveredExperience(item.company)}
-                            onMouseLeave={() => setHoveredExperience(null)}
                         >
                             <p className="text-xl text-muted-foreground">
                                 {item.company}

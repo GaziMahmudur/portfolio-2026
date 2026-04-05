@@ -12,6 +12,7 @@ export type Variant =
     | 'info'
     | 'light'
     | 'dark'
+    | 'outline'
     | 'link'
     | 'no-color';
 

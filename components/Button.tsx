@@ -50,13 +50,14 @@ const Button = ({
     ...rest
 }: Props) => {
     const variantClasses = {
-        primary: `bg-primary text-primary-foreground  hover:bg-primary-hover`,
-        secondary: `bg-secondary text-secondary-foreground hover:bg-secondary-hover`,
+        primary: `bg-primary text-primary-foreground hover:opacity-90`,
+        secondary: `bg-white/10 text-white border border-white/20 hover:bg-white/20`,
+        outline: `bg-transparent border-2 border-primary text-primary hover:text-primary-foreground transition-all duration-500`,
         success: `bg-green-500 text-white hover:bg-green-600`,
         warning: `bg-orange-500 text-white hover:bg-orange-600`,
         danger: `bg-destructive text-destructive-foreground hover:bg-destructive/70`,
         info: `bg-blue-500 text-white hover:bg-blue-600`,
-        light: `bg-background-active text-foreground hover:bg-background-active`,
+        light: `bg-white/10 text-foreground hover:bg-white/20`,
         dark: `bg-foreground text-background hover:bg-foreground/80`,
         link: `text-foreground hover:text-primary`,
         'no-color': '',

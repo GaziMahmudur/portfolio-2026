@@ -54,16 +54,28 @@ const Banner = () => {
                         experience in building high-performance, scalable, and
                         responsive fintech solutions.
                     </p>
-                    <Button
-                        as="link"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href={GENERAL_INFO.upworkProfile}
-                        variant="primary"
-                        className="mt-9 banner-button slide-up-and-fade"
-                    >
-                        Hire Me
-                    </Button>
+                    <div className="mt-9 flex items-center gap-4 slide-up-and-fade">
+                        <Button
+                            as="link"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={GENERAL_INFO.upworkProfile}
+                            variant="primary"
+                            className="banner-button"
+                        >
+                            Hire Me
+                        </Button>
+                        <Button
+                            as="link"
+                            href="/assets/Resume.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            variant="outline"
+                            className="banner-button"
+                        >
+                            Download CV
+                        </Button>
+                    </div>
                 </div>
 
                 <div className="md:absolute bottom-[10%] right-[4%] flex md:flex-col gap-4 md:gap-8 text-center md:text-right">
