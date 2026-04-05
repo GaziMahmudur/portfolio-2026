@@ -11,6 +11,7 @@ export const GENERAL_INFO = {
 };
 
 export const SOCIAL_LINKS = [
+    { name: 'github', url: 'https://github.com/muhammad-ashik' },
     { name: 'linkedin', url: GENERAL_INFO.linkedin },
     { name: 'facebook', url: 'https://www.facebook.com/adrian.ahsin' },
     { name: 'whatsapp', url: 'https://wa.me/8801632035033' },
@@ -81,7 +82,7 @@ export const PROJECTS: IProject[] = [
         title: 'Flowcode TV — Cloud Video Editor',
         slug: 'flowcode-tv',
         techStack: ['React', 'Remotion', 'Lottie', 'Node.js'],
-        thumbnail: '/projects/thumbnail/flowcode.webp',
+        thumbnail: '/assets/FlowCode-TV.webp',
         longThumbnail: '/projects/long/flowcode.webp',
         images: [],
         liveUrl: '#',
@@ -117,7 +118,7 @@ export const PROJECTS: IProject[] = [
         title: 'Flow Leads — Lead Management',
         slug: 'flow-leads',
         techStack: ['React.js', 'Node.js', 'Express.js'],
-        thumbnail: '/projects/thumbnail/flow-leads.webp',
+        thumbnail: '/assets/FlowLeads.webp',
         longThumbnail: '/projects/long/flow-leads.webp',
         images: [],
         liveUrl: '#',
@@ -129,7 +130,7 @@ export const PROJECTS: IProject[] = [
         title: 'DFL Project Manager',
         slug: 'dfl-project-manager',
         techStack: ['Next.js', 'Fluent UI', 'Planner REST API'],
-        thumbnail: '/projects/thumbnail/dfl.webp',
+        thumbnail: '/assets/DFL.webp',
         longThumbnail: '/projects/long/dfl.webp',
         images: [],
         liveUrl: '#',
