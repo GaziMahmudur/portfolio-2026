@@ -12,6 +12,8 @@ export const GENERAL_INFO = {
 
 export const SOCIAL_LINKS = [
     { name: 'linkedin', url: GENERAL_INFO.linkedin },
+    { name: 'facebook', url: 'https://www.facebook.com/adrian.ahsin' },
+    { name: 'whatsapp', url: 'https://wa.me/8801632035033' },
 ];
 
 export const MY_STACK = {
