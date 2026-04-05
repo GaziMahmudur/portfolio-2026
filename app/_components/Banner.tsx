@@ -41,10 +41,18 @@ const Banner = () => {
                 ref={containerRef}
             >
                 <div className="max-md:grow max-md:flex flex-col justify-center items-start max-w-[544px]">
-                    <h1 className="banner-title slide-up-and-fade leading-[1.05] text-6xl sm:text-[80px] font-anton flex flex-col items-start gap-1">
-                        <span className="text-primary">SOFTWARE</span>
-                        <span>ENGINEER</span>
-                    </h1>
+                    <div className="flex flex-col sm:flex-row items-center sm:items-end gap-6 slide-up-and-fade">
+                        <div className="size-32 sm:size-40 rounded-3xl bg-background-light border-2 border-primary/20 overflow-hidden relative group shrink-0 shadow-2xl shadow-primary/10">
+                            {/* Placeholder for Profile Picture */}
+                            <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent flex items-center justify-center opacity-50 group-hover:opacity-100 transition-opacity">
+                                <span className="text-4xl text-primary/30 font-anton">ASHIK</span>
+                            </div>
+                        </div>
+                        <h1 className="banner-title leading-[1] text-6xl sm:text-[82px] font-anton flex flex-col items-start">
+                            <span className="text-primary">SOFTWARE</span>
+                            <span>ENGINEER</span>
+                        </h1>
+                    </div>
                     <p className="banner-description slide-up-and-fade mt-6 text-lg text-muted-foreground">
                         Hi! I&apos;m{' '}
                         <span className="font-medium text-foreground">
