@@ -12,29 +12,32 @@ const Preloader = () => {
         () => {
             const tl = gsap.timeline({
                 defaults: {
-                    ease: 'power1.inOut',
+                    ease: 'expo.out',
                 },
             });
 
             tl.to('.name-text span', {
                 y: 0,
-                stagger: 0.1,
-                duration: 0.4,
+                stagger: 0.05,
+                duration: 1.2,
+                force3D: true,
             });
 
             tl.to('.preloader-item', {
-                delay: 1,
+                delay: 0.5,
                 y: '100%',
-                duration: 0.5,
-                stagger: 0.1,
+                duration: 0.8,
+                stagger: 0.05,
+                ease: 'power4.inOut',
             })
-                .to('.name-text span', { autoAlpha: 0 }, '<0.5')
+                .to('.name-text span', { autoAlpha: 0, duration: 0.4 }, '<0.2')
                 .to(
                     preloaderRef.current,
                     {
                         autoAlpha: 0,
+                        duration: 0.5,
                     },
-                    '<1',
+                    '<0.4',
                 );
         },
         { scope: preloaderRef },
@@ -46,13 +49,13 @@ const Preloader = () => {
                 <div key={i} className="preloader-item h-full w-[10%] bg-black"></div>
             ))}
 
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 overflow-visible">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 overflow-hidden">
                 <p className="name-text flex text-[20vw] lg:text-[200px] font-anton text-center leading-none">
-                    <span className="inline-block translate-y-full uppercase px-1">A</span>
-                    <span className="inline-block translate-y-full uppercase px-1">S</span>
-                    <span className="inline-block translate-y-full uppercase px-1">H</span>
-                    <span className="inline-block translate-y-full uppercase px-1">I</span>
-                    <span className="inline-block translate-y-full uppercase px-1">K</span>
+                    <span className="inline-block translate-y-full uppercase px-1 will-change-transform">A</span>
+                    <span className="inline-block translate-y-full uppercase px-1 will-change-transform">S</span>
+                    <span className="inline-block translate-y-full uppercase px-1 will-change-transform">H</span>
+                    <span className="inline-block translate-y-full uppercase px-1 will-change-transform">I</span>
+                    <span className="inline-block translate-y-full uppercase px-1 will-change-transform">K</span>
                 </p>
             </div>
         </div>
