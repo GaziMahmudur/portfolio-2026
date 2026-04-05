@@ -51,7 +51,7 @@ const Button = ({
 }: Props) => {
     const variantClasses = {
         primary: `bg-primary text-primary-foreground hover:opacity-90`,
-        secondary: `bg-white/10 text-white border border-white/20 hover:bg-white/20`,
+        secondary: `bg-foreground/10 text-foreground border border-foreground/20 hover:bg-foreground/20`,
         outline: `bg-transparent border-2 border-primary text-primary hover:text-primary-foreground transition-all duration-500`,
         success: `bg-green-500 text-white hover:bg-green-600`,
         warning: `bg-orange-500 text-white hover:bg-orange-600`,
@@ -85,10 +85,10 @@ const Button = ({
                     {...props}
                     href={props.href.toString() || '#'}
                 >
-                    {variant !== 'link' && (
-                        <span className="absolute top-[200%] left-0 right-0 h-full bg-white rounded-[50%] group-hover:top-0 transition-all duration-500 scale-150"></span>
+                    {variant !== 'link' && !variant?.includes('no-color') && (
+                        <span className="absolute top-[200%] left-0 right-0 h-full bg-foreground rounded-[50%] group-hover:top-0 transition-all duration-500 scale-150"></span>
                     )}
-                    <span className="z-[1]">
+                    <span className="z-[1] group-hover:text-background transition-colors duration-500">
                         {loading ? <Child icon={icon} /> : children}
                     </span>
                 </a>
@@ -97,12 +97,12 @@ const Button = ({
 
         return (
             <Link className={buttonClasses} {...props} href={props.href || '#'}>
-                {variant !== 'link' && (
-                    <span className="absolute top-[200%] left-0 right-0 h-full bg-white rounded-[50%] group-hover:top-0 transition-all duration-500 scale-150"></span>
-                )}
-                <span className="z-[1]">
-                    {loading ? <Child icon={icon} /> : children}
-                </span>
+                    {variant !== 'link' && !variant?.includes('no-color') && (
+                        <span className="absolute top-[200%] left-0 right-0 h-full bg-foreground rounded-[50%] group-hover:top-0 transition-all duration-500 scale-150"></span>
+                    )}
+                    <span className="z-[1] group-hover:text-background transition-colors duration-500">
+                        {loading ? <Child icon={icon} /> : children}
+                    </span>
             </Link>
         );
     } else if (as === 'button') {
@@ -110,12 +110,12 @@ const Button = ({
 
         return (
             <button className={buttonClasses} {...props}>
-                {variant !== 'link' && (
-                    <span className="absolute top-[200%] left-0 right-0 h-full bg-white rounded-[50%] group-hover:top-0 transition-all duration-500 scale-150"></span>
-                )}
-                <span className="z-[1]">
-                    {loading ? <Child icon={icon} /> : children}
-                </span>
+                    {variant !== 'link' && !variant?.includes('no-color') && (
+                        <span className="absolute top-[200%] left-0 right-0 h-full bg-foreground rounded-[50%] group-hover:top-0 transition-all duration-500 scale-150"></span>
+                    )}
+                    <span className="z-[1] group-hover:text-background transition-colors duration-500">
+                        {loading ? <Child icon={icon} /> : children}
+                    </span>
             </button>
         );
     }
