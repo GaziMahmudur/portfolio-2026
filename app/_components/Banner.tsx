@@ -41,9 +41,9 @@ const Banner = () => {
                 ref={containerRef}
             >
                 <div className="max-md:grow max-md:flex flex-col justify-center items-start max-w-[544px]">
-                    <h1 className="banner-title slide-up-and-fade leading-[.95] text-6xl sm:text-[80px] font-anton">
+                    <h1 className="banner-title slide-up-and-fade leading-[1.05] text-6xl sm:text-[80px] font-anton flex flex-col items-start gap-1">
                         <span className="text-primary">SOFTWARE</span>
-                        <br /> <span className="ml-4">ENGINEER</span>
+                        <span>ENGINEER</span>
                     </h1>
                     <p className="banner-description slide-up-and-fade mt-6 text-lg text-muted-foreground">
                         Hi! I&apos;m{' '}
