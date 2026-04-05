@@ -8,7 +8,7 @@ interface RepoStats {
 
 const Footer = async () => {
     const repoStats = await fetch(
-        'https://api.github.com/repos/tajmirul/portfolio-2.0',
+        'https://api.github.com/repos/GaziMahmudur/portfolio-2026',
         {
             next: {
                 revalidate: 60 * 60, // 1 hour
@@ -32,11 +32,11 @@ const Footer = async () => {
 
                 <div className="">
                     <a
-                        href="https://github.com/Tajmirul/portfolio-2.0"
+                        href="https://github.com/GaziMahmudur/portfolio-2026"
                         target="_blank"
                         className="leading-none text-muted-foreground hover:underline hover:text-white"
                     >
-                        Design & built by Tajmirul Islam <br />
+                        Design & built by Gazi Shuvo <br />
                         Developed by Muhammad Ashikuzzaman
 
                         <div className="flex items-center justify-center gap-5 pt-1">
