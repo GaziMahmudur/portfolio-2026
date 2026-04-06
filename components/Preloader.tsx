@@ -42,7 +42,7 @@ const Preloader = () => {
     );
 
     return (
-        <div className="fixed inset-0 z-[6] flex overflow-hidden" ref={preloaderRef}>
+        <div className="fixed inset-0 z-[999] flex overflow-hidden" ref={preloaderRef}>
             {[...Array(10)].map((_, i) => (
                 <div key={i} className="preloader-item h-full w-[10%] bg-black"></div>
             ))}

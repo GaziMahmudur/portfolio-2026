@@ -1,10 +1,13 @@
 'use client';
 import { cn } from '@/lib/utils';
-import { useState } from 'react';
 import { MoveUpRight } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { GENERAL_INFO, SOCIAL_LINKS } from '@/lib/data';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import React, { useEffect, useState } from 'react';
+import { useLenis } from 'lenis/react';
 
 const COLORS = [
     'bg-yellow-500 text-black',
@@ -17,32 +20,130 @@ const MENU_LINKS = [
     {
         name: 'Home',
         url: '/',
+        id: 'banner',
     },
     {
-        name: 'About Me',
-        url: '/#about-me',
-    },
-    {
-        name: 'Experience',
-        url: '/#my-experience',
-    },
-    {
-        name: 'Projects',
+        name: 'Portfolio',
         url: '/#selected-projects',
+        id: 'selected-projects',
+    },
+    {
+        name: 'Resume',
+        url: '/assets/Resume.pdf',
+    },
+    {
+        name: 'Testimonials',
+        url: '/#testimonials',
+        id: 'testimonials',
     },
 ];
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [activeSection, setActiveSection] = useState('Home');
     const router = useRouter();
+    const pathname = usePathname();
+
+    useEffect(() => {
+        const observerOptions = {
+            root: null,
+            rootMargin: '-40% 0px -40% 0px',
+            threshold: 0,
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const link = MENU_LINKS.find((l) => l.id === entry.target.id);
+                    if (link) setActiveSection(link.name);
+                }
+            });
+        }, observerOptions);
+
+        MENU_LINKS.forEach((link) => {
+            if (link.id) {
+                const el = document.getElementById(link.id);
+                if (el) observer.observe(el);
+            }
+        });
+
+        return () => observer.disconnect();
+    }, []);
+
+    const [isNotchHidden, setIsNotchHidden] = useState(false);
+
+    useLenis(({ scroll, direction }) => {
+        // direction: 1 for down, -1 for up
+        const threshold = 150;
+        
+        if (scroll > threshold && direction === 1 && !isNotchHidden) {
+            setIsNotchHidden(true);
+            gsap.to('.desktop-notch', { 
+                y: -150, 
+                autoAlpha: 0, 
+                duration: 0.5, 
+                ease: 'power3.inOut',
+                overwrite: true 
+            });
+        } else if ((direction === -1 || scroll <= threshold) && isNotchHidden) {
+            setIsNotchHidden(false);
+            gsap.to('.desktop-notch', { 
+                y: 0, 
+                autoAlpha: 1, 
+                duration: 0.5, 
+                ease: 'power3.out',
+                overwrite: true 
+            });
+        }
+    });
+
+    useGSAP(() => {
+        gsap.fromTo(
+            '.desktop-notch',
+            { y: -100, autoAlpha: 0 },
+            { y: 0, autoAlpha: 1, duration: 1, delay: 3, ease: 'power4.out' }
+        );
+    });
 
     return (
         <>
-            <div className="sticky top-0 z-[4]">
-                <ThemeToggle className="absolute top-5 right-20 md:right-28 z-[2]" />
+            {/* Desktop Notch Navigation */}
+            <nav className="desktop-notch fixed top-6 left-1/2 -translate-x-1/2 z-50 hidden min-[600px]:flex items-center gap-2 px-4 py-2 bg-foreground rounded-full shadow-2xl border border-white/10 invisible">
+                {/* Logo Space */}
+                <div className="w-10 h-10 mr-4" id="logo-placeholder">
+                    {/* Logo will be added here later */}
+                </div>
+
+                <div className="flex items-center gap-8 px-4">
+                    {MENU_LINKS.map((link) => {
+                        const isActive = activeSection === link.name;
+                        return (
+                            <a
+                                key={link.name}
+                                href={link.url}
+                                className={cn(
+                                    "text-sm font-bold transition-all relative py-1",
+                                    isActive ? "text-background" : "text-background/60 hover:text-background"
+                                )}
+                            >
+                                {link.name}
+                                {isActive && (
+                                    <span className="absolute bottom-0 left-0 w-full h-[2px] bg-background rounded-full transition-all"></span>
+                                )}
+                            </a>
+                        );
+                    })}
+                </div>
+
+                <ThemeToggle noBackground className="size-8 text-background hover:text-background/70" />
+            </nav>
+
+            {/* Mobile Navigation (Hamburger) */}
+            <div className="fixed top-0 right-0 z-50 min-[600px]:hidden">
+                <ThemeToggle className="absolute top-5 right-20 z-[2]" />
                 <button
                     className={cn(
-                        'group size-12 absolute top-5 right-5 md:right-10 z-[2]',
+                        'group size-12 absolute top-5 right-5 z-[2]',
                     )}
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
                 >
@@ -95,25 +196,6 @@ const Navbar = () => {
 
                 <div className="grow flex md:items-center w-full max-w-[300px] mx-8 sm:mx-auto">
                     <div className="flex gap-10 lg:justify-between max-lg:flex-col w-full">
-                        <div className="max-lg:order-2">
-                            <p className="text-muted-foreground mb-5 md:mb-8">
-                                SOCIAL
-                            </p>
-                            <ul className="space-y-3">
-                                {SOCIAL_LINKS.map((link) => (
-                                    <li key={link.name}>
-                                        <a
-                                            href={link.url}
-                                            target="_blank"
-                                            rel="noreferrer"
-                                            className="text-lg capitalize hover:underline"
-                                        >
-                                            {link.name}
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
                         <div className="">
                             <p className="text-muted-foreground mb-5 md:mb-8">
                                 MENU
@@ -131,7 +213,7 @@ const Navbar = () => {
                                             <span
                                                 className={cn(
                                                     'size-3.5 bg-white/20 rounded-full flex items-center justify-center group-hover:scale-[200%] transition-all',
-                                                    COLORS[idx],
+                                                    COLORS[idx % COLORS.length],
                                                 )}
                                             >
                                                 <MoveUpRight
