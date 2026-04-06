@@ -1,7 +1,7 @@
 'use client';
 import { cn } from '@/lib/utils';
 import { MoveUpRight } from 'lucide-react';
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { GENERAL_INFO } from '@/lib/data';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { useGSAP } from '@gsap/react';
