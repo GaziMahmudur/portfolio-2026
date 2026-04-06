@@ -27,6 +27,11 @@ export const MY_STACK = {
         { name: 'Vue.js', icon: '/logo/vue.png' },
         { name: 'React Native', icon: '/logo/react.png' },
     ],
+    rendering: [
+        { name: 'SSR', icon: '/logo/next.png' },
+        { name: 'SSG', icon: '/logo/next.png' },
+        { name: 'Micro-Frontends', icon: '/logo/react.png' },
+    ],
     'State Mgmt': [
         { name: 'Redux', icon: '/logo/redux.png' },
         { name: 'Pinia', icon: '/logo/pinia.svg' },
@@ -45,6 +50,11 @@ export const MY_STACK = {
         { name: 'Vuetify', icon: '/logo/vue.png' },
         { name: 'Sass', icon: '/logo/sass.png' },
     ],
+    'Testing & QA': [
+        { name: 'Jest', icon: '/logo/ts.png' },
+        { name: 'Vitest', icon: '/logo/ts.png' },
+        { name: 'React Testing Library', icon: '/logo/react.png' },
+    ],
     'DevOps & CI/CD': [
         { name: 'Docker', icon: '/logo/docker.svg' },
         { name: 'Kubernetes', icon: '/logo/k8s.svg' },
@@ -56,19 +66,51 @@ export const MY_STACK = {
         { name: 'Sentry', icon: '/logo/node.png' },
         { name: 'LogRocket', icon: '/logo/node.png' },
     ],
+    performance: [
+        { name: 'Core Web Vitals', icon: '/logo/js.png' },
+        { name: 'Lighthouse', icon: '/logo/js.png' },
+        { name: 'Code Splitting', icon: '/logo/js.png' },
+    ],
+    security: [
+        { name: 'OAuth', icon: '/logo/js.png' },
+        { name: 'JWT', icon: '/logo/js.png' },
+        { name: 'SSO', icon: '/logo/js.png' },
+        { name: 'RBAC', icon: '/logo/js.png' },
+        { name: 'Snyk', icon: '/logo/js.png' },
+    ],
+    'browser apis': [
+        { name: 'Service Workers', icon: '/logo/js.png' },
+        { name: 'Web Workers', icon: '/logo/js.png' },
+    ],
+    i18n: [
+        { name: 'react-intl', icon: '/logo/react.png' },
+        { name: 'vue-i18n', icon: '/logo/vue.png' },
+        { name: 'Localization', icon: '/logo/js.png' },
+    ],
     databases: [
         { name: 'PostgreSQL', icon: '/logo/postgreSQL.png' },
         { name: 'TypeORM', icon: '/logo/ts.png' },
     ],
+    libraries: [
+        { name: 'Remotion', icon: '/logo/react.png' },
+        { name: 'Lottie', icon: '/logo/react.png' },
+        { name: 'Socket.io', icon: '/logo/node.png' },
+        { name: 'Expo', icon: '/logo/react.png' },
+    ],
     'AI Tools': [
         { name: 'Claude AI', icon: '/logo/js.png' },
         { name: 'Cursor', icon: '/logo/js.png' },
+        { name: 'Prompt Engineering', icon: '/logo/js.png' },
+    ],
+    'Component Libs': [
+        { name: 'Storybook', icon: '/logo/react.png' },
+        { name: 'Design Tokens', icon: '/logo/js.png' },
     ],
     tools: [
         { name: 'Git', icon: '/logo/git.png' },
         { name: 'Jira', icon: '/logo/jira.svg' },
         { name: 'Agile/Scrum', icon: '/logo/jira.svg' },
-        { name: 'Storybook', icon: '/logo/react.png' },
+        { name: 'npm', icon: '/logo/js.png' },
         { name: 'Vite', icon: '/logo/js.png' },
         { name: 'Webpack', icon: '/logo/js.png' },
     ],
