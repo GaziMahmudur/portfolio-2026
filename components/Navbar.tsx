@@ -2,13 +2,12 @@
 import { cn } from '@/lib/utils';
 import { MoveUpRight } from 'lucide-react';
 import { usePathname, useRouter } from 'next/navigation';
-import { GENERAL_INFO, SOCIAL_LINKS } from '@/lib/data';
+import { GENERAL_INFO } from '@/lib/data';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import React, { useEffect, useState } from 'react';
 import { useLenis } from 'lenis/react';
-import { useTheme } from 'next-themes';
 import Image from 'next/image';
 
 const COLORS = [
@@ -43,13 +42,9 @@ const MENU_LINKS = [
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [activeSection, setActiveSection] = useState('Home');
-    const { resolvedTheme } = useTheme();
-    const [mounted, setMounted] = useState(false);
     const router = useRouter();
-    const pathname = usePathname();
 
     useEffect(() => {
-        setMounted(true);
         const observerOptions = {
             root: null,
             rootMargin: '-40% 0px -40% 0px',
