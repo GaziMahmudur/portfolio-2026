@@ -8,6 +8,8 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import React, { useEffect, useState } from 'react';
 import { useLenis } from 'lenis/react';
+import { useTheme } from 'next-themes';
+import Image from 'next/image';
 
 const COLORS = [
     'bg-yellow-500 text-black',
@@ -41,10 +43,13 @@ const MENU_LINKS = [
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [activeSection, setActiveSection] = useState('Home');
+    const { resolvedTheme } = useTheme();
+    const [mounted, setMounted] = useState(false);
     const router = useRouter();
     const pathname = usePathname();
 
     useEffect(() => {
+        setMounted(true);
         const observerOptions = {
             root: null,
             rootMargin: '-40% 0px -40% 0px',
@@ -110,8 +115,23 @@ const Navbar = () => {
             {/* Desktop Notch Navigation */}
             <nav className="desktop-notch fixed top-6 left-1/2 -translate-x-1/2 z-50 hidden min-[600px]:flex items-center gap-2 px-4 py-2 bg-foreground rounded-full shadow-2xl border border-white/10 invisible">
                 {/* Logo Space */}
-                <div className="w-10 h-10 mr-4" id="logo-placeholder">
-                    {/* Logo will be added here later */}
+                <div className="w-10 h-10 mr-4 flex items-center justify-center translate-y-[-1px]" id="logo-placeholder">
+                    {/* Dark Mode Notch Logo (Black) */}
+                    <Image 
+                        src="/logo/logo-black.png" 
+                        alt="Logo" 
+                        width={40} 
+                        height={40} 
+                        className="object-contain hidden dark:block"
+                    />
+                    {/* Light Mode Notch Logo (White) */}
+                    <Image 
+                        src="/logo/logo-white.png" 
+                        alt="Logo" 
+                        width={40} 
+                        height={40} 
+                        className="object-contain block dark:hidden"
+                    />
                 </div>
 
                 <div className="flex items-center gap-8 px-4">
