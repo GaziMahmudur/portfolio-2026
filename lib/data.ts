@@ -104,7 +104,6 @@ export const MY_STACK = {
     ],
     'Component Libs': [
         { name: 'Storybook', icon: '/logo/react.png' },
-        { name: 'Design Tokens', icon: '/logo/js.png' },
     ],
     tools: [
         { name: 'Git', icon: '/logo/git.png' },
@@ -166,18 +165,6 @@ export const PROJECTS: IProject[] = [
         role: `Software Developer`,
     },
     {
-        title: 'iPlanner — Outlook Integration',
-        slug: 'iplanner-outlook',
-        techStack: ['Next.js', 'REST API', 'Fluent UI'],
-        thumbnail: '/assets/iPlanner-Outlook-and-Team-App-740x414.webp',
-        longThumbnail: '/projects/long/dfl.webp',
-        images: [],
-        liveUrl: '#',
-        year: 2024,
-        description: `Complex Outlook and Teams integration for enterprise project management and scheduling.`,
-        role: `Software Engineer`,
-    },
-    {
         title: 'Flow Leads — Lead Management',
         slug: 'flow-leads',
         techStack: ['React.js', 'Node.js', 'Express.js'],
@@ -200,18 +187,6 @@ export const PROJECTS: IProject[] = [
         year: 2024,
         description: `Real-time resource allocation and project tracking for enterprise teams.`,
         role: `Software Engineer`,
-    },
-    {
-        title: 'Property Pro — Sales Automation',
-        slug: 'property-pro',
-        techStack: ['Next.js', 'PostgreSQL', 'Prisma'],
-        thumbnail: '/projects/thumbnail/property-pro.jpg',
-        longThumbnail: '/projects/long/property-pro.webp',
-        images: [],
-        liveUrl: '#',
-        year: 2024,
-        description: `Automated property valuation and lead nurturing system for real estate brokers.`,
-        role: `Lead Developer`,
     },
 ];
 
